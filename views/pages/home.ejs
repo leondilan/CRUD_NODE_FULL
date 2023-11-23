@@ -1,0 +1,47 @@
+<%- include('../component/header'); -%>
+
+    <div class="container mt-3">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <a href="/user/new-user" class="btn btn-primary w-25">New User</a>
+                <% if (users.length===0) { %>
+                    <p class="text-center fs-4">There are no users to display</p>
+                <% }else{ %>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Ville</th>
+                            <th scope="col">Tel</th>
+                            <th scope="col">Pays</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% users.forEach(function(user){ %>
+                            <tr>
+                                <td><%= user.name %></td>
+                                <td><%= user.ville %></td>
+                                <td><%= user.tel %></td>
+                                <td><%= user.pays %></td>
+                                <td>
+                                    <a href="/user/edit/<%= user.id %>">
+                                        <i class="fa fa-edit text-primary"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/user/delete/<%= user.id %>">
+                                        <i class="fa fa-trash text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                <% }%>
+            </div>
+        </div>
+    </div>
+
+<%- include('../component/footer'); -%>

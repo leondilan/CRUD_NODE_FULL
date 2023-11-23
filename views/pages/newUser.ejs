@@ -1,0 +1,63 @@
+<%- include('../component/header'); -%>
+
+    <div class="container mt-5">
+        <p class="display-6 text-center">AJOUTER UN NOUVEAU USER</p>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/user/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Creer User</li>
+                    </ol>
+                </nav>
+                <form action="/user/new-user" method="post" enctype="multipart/form-data">
+                    <% if (messages.info) { %>
+                        <div class="alert alert-danger">
+                            <%= messages.info %>
+                        </div>
+                    <% } %>
+                    <% if (messages.file) { %>
+                        <div class="alert alert-danger">
+                            <%= messages.file %>
+                        </div>
+                    <% } %>
+                    <% if (messages.errors) { %>
+                        <ul>
+                            <% for(key in messages.errors[0]){ %>
+                                <li class="text-danger">
+                                    <%= messages.errors[0][key]['message'] %>
+                                </li>
+                            <% } %>
+                        </ul>
+                    <% } %>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Nom</label>
+                        <input type="text" class="form-control" id="nom" name="nom">
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" aria-label="Default select example" name="pays">
+                            <option value="Cameroun">Cameroun</option>
+                            <option value="Togo">Togo</option>
+                            <option value="Gabon">Gabon</option>
+                            <option value="Tchad">Tchad</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ville" class="form-label">Ville</label>
+                        <input type="text" class="form-control" id="ville" name="ville">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tel" class="form-label">Tel</label>
+                        <input type="tel" class="form-control" id="tel" name="tel">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Image</label>
+                        <input class="form-control" type="file" id="formFile" name="file">
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary w-100">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<%- include('../component/footer'); -%>

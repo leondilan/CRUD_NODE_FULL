@@ -1,0 +1,45 @@
+<%- include('../component/header'); -%>
+
+<div class="container mt-5">
+    <p class="display-6 text-center">UPDATE USER</p>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/user/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Update User</li>
+                </ol>
+            </nav>
+            <form action="/user/edit/<%= user.id %>" method="post">
+                <% if (messages.info) { %>
+                    <div class="alert alert-danger">
+                        <%= messages.info %>
+                    </div>
+                <% } %>
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" value="<%= user.name %>">
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" aria-label="Default select example" name="pays">
+                        <option value="Cameroun">Cameroun</option>
+                        <option value="Togo">Togo</option>
+                        <option value="Gabon">Gabon</option>
+                        <option value="Tchad">Tchad</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="ville" class="form-label">Ville</label>
+                    <input type="text" class="form-control" id="ville" name="ville" value="<%= user.ville %>">
+                </div>
+                <div class="mb-3">
+                    <label for="tel" class="form-label">Tel</label>
+                    <input type="tel" class="form-control" id="tel" name="tel" value="<%= user.tel %>">
+                </div>
+                <button type="submit" class="btn btn-outline-primary w-100">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../component/footer'); -%>
